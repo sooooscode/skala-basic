@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주간 시간표</title>
+
+    <h1>연수의 주간 시간표</h1>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>시간</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+                <th>일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>7:30~8:00</td>
+                <td colspan="7">기상</td>
+            </tr>
+            <tr>
+                <td>8:00~9:00</td>
+                <td colspan="7">준비</td>
+            </tr>
+            <tr>
+                <td>9:00~12:00</td>
+                <td colspan="5">SKALA</td>
+                <td colspan="2">도서관</td>
+            </tr>
+            <tr>
+                <td>1:00~6:00</td>
+                <td colspan="5">SKALA</td>
+                <td colspan="2">도서관</td>
+            </tr>
+            <tr>
+                <td>6:00~7:00</td>
+                <td colspan="7">이동 및 저녁</td>
+            </tr>
+            <tr>
+                <td>7:00~9:00</td>
+                <td colspan="7">운동 및 샤워</td>
+            </tr>
+            <tr>
+                <td>11:00~12:00</td>
+                <td colspan="7">취침</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
