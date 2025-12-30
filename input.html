@@ -75,7 +75,16 @@
                 <input type="radio" id="other" name="gender" value="other">
                 <label for="other">기타</label><br><br>
 
-                <label>관심사:</label>
+
+            <label>학년 선택:</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">초등학생</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">중학생</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">고등학생</label><br><br>
+
+            <label>관심사:</label>
                 <input type="checkbox" id="sports" name="interests" value="sports">
                 <label for="sports">스포츠</label>
                 <input type="checkbox" id="music" name="interests" value="music">
@@ -86,7 +95,33 @@
                 <label for="gaming">게임</label><br><br>
 
 
+                <label for="fruit-select">좋아하는 과일:</label>
+                <select id="fruit-select" name="fruit-select">
+                    <option value="">선택하세요</option>
+                    <option value="apple">사과</option>
+                    <option value="banana">바나나</option>
+                    <option value="orange">오렌지</option>
+                    <option value="strawberry">딸기</option>
+                    <option value="grape">포도</option>
+                </select><br><br>
+
+                <div id="selected-fruit"></div>
+
+                <script>
+                    const fruitSelect = document.getElementById('fruit-select');
+                    const selectedFruit = document.getElementById('selected-fruit');
+                    
+                    fruitSelect.addEventListener('change', function() {
+                        if (this.value) {
+                            selectedFruit.textContent = '선택된 과일: ' + this.options[this.selectedIndex].text;
+                        } else {
+                            selectedFruit.textContent = '';
+                        }
+                    });
+                </script><br><br>
+
         <button type="submit">제출</button>
+        <button type="reset">초기화</button>
     </form>
 </body>
 </html>
