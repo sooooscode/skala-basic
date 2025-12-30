@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여러 가지 입력 유형</title>
+</head>
+<body>
+    <h1>여러 가지 입력 유형</h1>
+    <form>
+        <label for="text-input">텍스트 입력:</label>
+        <input type="text" id="text-input" name="text-input"><br><br>
+
+        <label for="password-input">비밀번호 입력:</label>
+        <input type="password" id="password-input" name="password-input" required pattern="(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" title="최소 8자, 소문자, 숫자, 특수문자 포함"><br><br>
+        
+        <div id="password-requirements">
+            <p>비밀번호 요구사항:</p>
+            <ul>
+            <li id="req-length"><span>✗</span> 최소 8자</li>
+            <li id="req-lowercase"><span>✗</span> 소문자 포함</li>
+            <li id="req-number"><span>✗</span> 숫자 포함</li>
+            <li id="req-special"><span>✗</span> 특수문자 (@$!%*?&) 포함</li>
+            </ul>
+        </div>
+        
+        <script>
+            const passwordInput = document.getElementById('password-input');
+            const requirements = {
+            'req-length': value => value.length >= 8,
+            'req-lowercase': value => /[a-z]/.test(value),
+            'req-number': value => /\d/.test(value),
+            'req-special': value => /[@$!%*?&]/.test(value)
+            };
+            
+            passwordInput.addEventListener('input', function() {
+            Object.entries(requirements).forEach(([id, check]) => {
+                const element = document.getElementById(id);
+                const span = element.querySelector('span');
+                if (check(this.value)) {
+                span.textContent = '✓';
+                element.style.color = 'green';
+                } else {
+                span.textContent = '✗';
+                element.style.color = 'red';
+                }
+            });
+            });
+        </script><br><br>
+
+        <label for="email-input">이메일 입력:</label>
+        <input type="email" id="email-input" name="email-input" placeholder="username">
+        <select id="email-domain" name="email-domain">
+            <option value="@gmail.com">@gmail.com</option>
+            <option value="@naver.com">@naver.com</option>
+            <option value="@daum.net">@daum.net</option>
+            <option value="@outlook.com">@outlook.com</option>
+        </select><br><br>
+
+        <label for="number-input">숫자 입력:</label>
+        <input type="number" id="number-input" name="number-input"><br><br>
+
+        <label for="date-input">날짜 선택:</label>
+        <input type="date" id="date-input" name="date-input"><br><br>
+
+        <label for="color-input">색상 선택:</label>
+        <input type="color" id="color-input" name="color-input"><br><br>
+
+            <label>성별 선택:</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">남성</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">여성</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">기타</label><br><br>
+
+                <label>관심사:</label>
+                <input type="checkbox" id="sports" name="interests" value="sports">
+                <label for="sports">스포츠</label>
+                <input type="checkbox" id="music" name="interests" value="music">
+                <label for="music">음악</label>
+                <input type="checkbox" id="reading" name="interests" value="reading">
+                <label for="reading">독서</label>
+                <input type="checkbox" id="gaming" name="interests" value="gaming">
+                <label for="gaming">게임</label><br><br>
+
+
+        <button type="submit">제출</button>
+    </form>
+</body>
+</html>
