@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부트스트랩 Offcanvas 아코디언 메뉴</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- MDI CDN 추가 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+    <style>
+        .btn-menu-fixed {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1040; /* Offcanvas(1050)보다 낮게 설정하여 열렸을 때 뒤로 숨김 */
+        }
+    </style>
+</head>
+<body class="pt-5">
+
+    <div class="container mt-5">
+        <h1>메뉴 예제</h1>
+        <p>좌측 상단의 햄버거 버튼을 클릭하여 메뉴를 확인하세요.</p>
+        
+        <!-- 메뉴 열기 버튼 (화면 좌상단 고정) -->
+        <button class="btn btn-primary btn-menu-fixed shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+            <i class="mdi mdi-menu fs-4"></i>
+        </button>
+    </div>
+
+    <!-- Offcanvas 컴포넌트 -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasMenuLabel">전체 메뉴</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- 아코디언 메뉴 -->
+            <div class="accordion" id="accordionMenu">
+                
+                <!-- 상위 메뉴 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            전자제품
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionMenu">
+                        <div class="accordion-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action">스마트폰</a>
+                                <a href="#" class="list-group-item list-group-item-action">노트북</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 상위 메뉴 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            의류
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionMenu">
+                        <div class="accordion-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action">남성 의류</a>
+                                <a href="#" class="list-group-item list-group-item-action">여성 의류</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 상위 메뉴 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            도서
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionMenu">
+                        <div class="accordion-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action">소설</a>
+                                <a href="#" class="list-group-item list-group-item-action">자기계발</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
