@@ -1,40 +1,40 @@
-<!-- flexbox.html
+<!-- 
 #3. CSS 
- [실습2-2] Flexbox 실습 
- flexbox를 이용하여 3개의 박스를 가로 및 세로 중앙 정렬 
+ [실습2-2] 박스 정렬 (css/flexbox.html)
+ : flexbox를 이용하여 3개의 박스를 가로 및 세로 중앙 정렬 
  -->
-
 <!DOCTYPE html>
 <html>
 <head>
     <style>
-        /* 부모 컨테이너: 이곳이 핵심입니다 */
         .container {
-            display: flex;           /* Flexbox 활성화 */
-            justify-content: center; /* 가로(메인축) 중앙 정렬 */
-            align-items: center;     /* 세로(교차축) 중앙 정렬 */
-            
-            height: 100vh;           /* 화면 전체 높이를 차지해야 세로 중앙이 보입니다 */
-            border: 2px solid #ccc;
+            display: flex;
+            justify-content: space-between; /* 스크린샷처럼 배치하는 핵심 */
+            align-items: center;
+            height: 100vh;
+            padding: 0 20px;
+            border: 5px solid #ccc;
+            box-sizing: border-box;
+            background-color: #f0f0f0; /* 배경색은 참고용 */
         }
 
-        /* 자식 박스들 */
         .box {
             width: 100px;
             height: 100px;
-            background-color: skyblue;
-            margin: 10px; /* 박스 사이 간격 */
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px; /* 스크린샷의 둥근 모서리 재현 */
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <div class="box">1</div>
         <div class="box">2</div>
         <div class="box">3</div>
     </div>
-
 </body>
 </html>
-

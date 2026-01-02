@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid 실습</title>
+    <style>
+        .grid-container {
+            display: grid; /* 1. Grid 활성화 */
+            
+            /* 2. 3열(Column) 만들기: 1fr씩 3개 (비율 동일) */
+            grid-template-columns: repeat(4, 1fr);
+            
+            /* 3. 2행(Row) 만들기: 높이 150px씩 2개 */
+            grid-template-rows: repeat(2, 150px);
+            
+            gap: 10px; /* 박스 사이 간격 */
+            padding: 10px;
+            border: 2px solid #333;
+        }
+
+        .grid-item {
+            background-color: #3498db;
+            color: white;
+            display: flex; /* 숫자 중앙 정렬을 위해 flex 사용 */
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>2행 3열 Grid 레이아웃</h2>
+    <div class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <!-- <div class="grid-item">6</div> -->
+    </div>
+
+</body>
+</html>
