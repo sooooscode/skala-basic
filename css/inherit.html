@@ -1,21 +1,37 @@
+<!-- inherit.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스타일 상속</title>
 
     <style>
+        /* 요소 선택자 */
         div {
             color: blue;
             background-color: beige;
             font-size: 40px;
         }
+        /* 아이디 선택자 # */
+        #up {
+            font-weight: bold;
+        }
+        #down {
+            text-decoration: underline;
+        }
+        /* 클래스 선택자 . */
+        .cls-1 {
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
     <div>
-        <p>이 문장은 div의 스타일을 상속받습니다.</p>
+        <p id="up">이 문장은 div의 스타일을 상속받습니다.</p>
+        <p id="down" class="cls-1">이 문장도 div의 스타일을 상속받습니다.</p>
+
     </div>
 
 </body>
