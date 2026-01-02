@@ -1,0 +1,79 @@
+<!-- 
+#3. CSS 
+ [실습2-3] Grid + Flexbox 조합(css/layout.html)
+    : 상단 검색 영역은 flexbox, 하단 목록형 데이터 영역은 grid 활용
+ -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>검색 및 목록 레이아웃</title>
+    <style>
+        /* 1. 전체 레이아웃 설정 */
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* 요소 사이 간격 */
+        }
+
+        /* 2. 상단 검색 영역 (Flexbox 활용) */
+        .search-container {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .search-input {
+            flex-grow: 1; /* 입력창이 가능한 넓게 차지 */
+            padding: 8px 12px;
+            border: 1px solid #333;
+            font-size: 16px;
+        }
+
+        .search-button {
+            padding: 8px 20px;
+            border: 1px solid #333;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        /* 3. 하단 목록형 데이터 영역 (Grid 또는 Box 활용) */
+        .data-container {
+            border: 1px solid #ccc;
+            padding: 30px;
+            max-width: 800px;
+            min-height: 150px;
+        }
+
+        .data-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .data-line {
+            border: none;
+            border-top: 1px solid #333;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="키워드 입력">
+        <button class="search-button">검색</button>
+    </div>
+
+    <div class="data-container">
+        <span class="data-title">목록형 데이터 영역</span>
+        <hr class="data-line">
+    </div>
+
+</body>
+</html>
