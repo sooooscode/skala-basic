@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>드래그 & 드롭 효과</title>
+
+<style>
+    body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    button {
+        background-color: lightblue;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+
+    button:hover {
+        background-color: lightgreen;
+    }
+
+    /* 드롭 영역 스타일 */
+    #dropZone {
+        width: 300px;
+        height: 200px;
+        border: 3px dashed #aaa;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #aaa;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 드롭 시 애니메이션 효과 */
+    #dropZone.active {
+        border-color: #00bfff;
+        color: #00bfff;
+        box-shadow: 0 0 20px #00bfff;
+        transform: scale(1.05);
+    }
+
+    /* 폭발 느낌의 효과 (버튼이 들어올 때) */
+    .spark {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, #00bfff 0%, transparent 70%);
+        border-radius: 50%;
+        animation: spark 0.6s forwards;
+        pointer-events: none;
+    }
+
+    @keyframes spark {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(5); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<button draggable="true">버튼 드래그!</button>
+
+<div id="dropZone">여기로 버튼을 드롭하세요</div>
+
+<script>
+const button = document.querySelector('button');
+const dropZone = document.getElementById('dropZone');
+
+button.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', 'button');
+});
+
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault(); // 드롭 허용
+});
+
+dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+
+    // 멋진 효과 추가
+    dropZone.classList.add('active');
+
+    // spark 효과 생성
+    for(let i=0; i<10; i++){
+        const spark = document.createElement('div');
+        spark.className = 'spark';
+        spark.style.left = Math.random() * dropZone.clientWidth + 'px';
+        spark.style.top = Math.random() * dropZone.clientHeight + 'px';
+        dropZone.appendChild(spark);
+
+        // 애니메이션 끝나면 제거
+        spark.addEventListener('animationend', () => spark.remove());
+    }
+
+    // 0.6초 후 효과 해제
+    setTimeout(() => dropZone.classList.remove('active'), 600);
+});
+</script>
+
+</body>
+</html>
