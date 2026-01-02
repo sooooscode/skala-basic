@@ -1,0 +1,84 @@
+<!-- 
+#3. CSS 
+ [실습 3-1] 변환과 전환 효과 예시(css/trans.html)
+ 요구사항:
+    - 상단에는 라운드로 곡선 처리된 div 박스에 hover me 라는 텍스트가 입력
+    - 상단 박스에 마우스를 올리는 경우 녹색에서 노란색으로 배경이 변경
+    - 하단에는 버튼을 위치하고, 버튼을 누를 경우 상단 박스가 45도 기울도록 구성
+
+ -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 토글 회전 실습</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+
+    <style>
+        /* 1. 체크박스는 로직용이므로 화면에서 숨김 */
+        #toggle-trigger {
+            display: none;
+        }
+
+        /* 2. 상단 박스 설정 (위치 고정) */
+        .transform-box {
+            width: 200px;
+            height: 200px;
+            background-color: green; /* 초기: 녹색 */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            
+            /* 배경색과 회전 모두 부드럽게 전환 */
+            transition: transform 0.5s ease, background-color 0.5s ease;
+        }
+
+        /* 호버 시 요구사항: 노란색으로 변경 */
+        .transform-box:hover {
+            background-color: rgb(245, 245, 137);
+            color: black;
+        }
+
+        /* 3. 핵심 로직: 체크박스가 체크되면 박스를 45도 회전 */
+        /* '~' 선택자는 형제 요소 중 뒤에 있는 요소를 선택합니다. */
+        #toggle-trigger:checked ~ .transform-box {
+            transform: rotate(45deg);
+        }
+
+        /* 4. 하단 버튼 (label을 버튼처럼 디자인) */
+        .rotate-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none; /* 텍스트 드래그 방지 */
+        }
+
+        .rotate-button:active {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>CSS 전용 토글 변환</h2>
+    <p>버튼을 클릭하면 박스가 45도 회전하고, 다시 클릭하면 돌아옵니다.</p>
+
+    <input type="checkbox" id="toggle-trigger">
+
+    <div class="transform-box">Hover me!</div>
+    
+    <label for="toggle-trigger" class="rotate-button">회전 토글 버튼</label>
+
+</body>
+</html>
