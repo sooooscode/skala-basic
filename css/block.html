@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>div 블록 vs 인라인 비교</title>
+    <style>
+        /* 공통 스타일 */
+        .box {
+            width: 150px;
+            height: 50px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+        }
+
+        .bg-blue { background-color: #3498db; }
+        .bg-red { background-color: #e74c3c; }
+
+        /* 1. 기본 블록 스타일 (display: block) */
+        .block-container .box {
+            display: block;
+        }
+
+        /* 2. 인라인 스타일 (display: inline) */
+        /* 주의: inline은 width/height가 적용되지 않습니다. */
+        .inline-container .box {
+            display: inline;
+            padding: 10px; /* 크기 확인을 위해 패딩 추가 */
+        }
+
+        /* 3. 인라인-블록 스타일 (display: inline-block) */
+        /* 인라인처럼 배치되면서 블록의 속성(크기 지정)을 가집니다. */
+        .inline-block-container .box {
+            display: inline-block;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px dashed #ccc;
+        }
+        
+        h2 { border-left: 5px solid #2c3e50; padding-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>div 요소 디스플레이 비교</h1>
+
+    <section class="block-container">
+        <h2>1. Block (기본값)</h2>
+        <p>가로 너비를 모두 차지하며, 다음 요소는 항상 줄바꿈되어 나타납니다.</p>
+        <div class="box bg-blue">Block 1</div>
+        <div class="box bg-blue">Block 2</div>
+    </section>
+
+    <section class="inline-container">
+        <h2>2. Inline</h2>
+        <p>콘텐츠만큼만 너비를 차지합니다. <strong>width/height가 무시됩니다.</strong></p>
+        <div class="box bg-red">Inline 1</div>
+        <div class="box bg-red">Inline 2</div>
+    </section>
+
+    <section class="inline-block-container">
+        <h2>3. Inline-Block</h2>
+        <p>인라인처럼 옆으로 나열되지만, <strong>Block처럼 크기(width/height)를 가질 수 있습니다.</strong></p>
+        <div class="box bg-blue">In-Block 1</div>
+        <div class="box bg-blue">In-Block 2</div>
+    </section>
+
+</body>
+</html>
