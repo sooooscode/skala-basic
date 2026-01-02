@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김연수의 프로필</title>
+    <style>
+        /* 기본 폰트 및 배경 설정 */
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        /* 컨테이너 박스 */
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* 제목 스타일 */
+        h1 {
+            color: #2d3436;
+            border-bottom: 3px solid #007bff;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            border-left: 5px solid #007bff;
+            padding-left: 15px;
+            margin-top: 40px;
+            font-size: 1.4rem;
+        }
+
+        /* 레이아웃 제어 */
+        .intro-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #f0f0f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .info-list span {
+            color: #666;
+            font-weight: 600;
+            margin-right: 12px;
+            display: inline-block;
+            width: 50px;
+        }
+
+        .interests-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .interests-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f3f5;
+            color: #495057;
+            width: 30%;
+        }
+
+        /* 교육 섹션 추가 스타일 */
+        .edu-item {
+            margin-bottom: 10px;
+        }
+
+        /* 링크 스타일 */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 반응형 */
+        @media (max-width: 600px) {
+            .intro-section {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .info-list span {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="container">
+    <header>
+        <h1>김연수의 Profile</h1>
+        <p>안녕하세요! <strong>백엔드 개발자 김연수</strong>입니다. <strong>웹 개발과 클라우드</strong>에 관심이 많습니다.</p>
+    </header>
+
+    <section class="intro-section">
+        <article class="intro-text">
+            <h2>Introduction</h2>
+            <ul class="info-list">
+                <li><span>이름</span> 김연수</li>
+                <li><span>나이</span> 2001년생</li>
+                <li><span>전공</span> 컴퓨터 공학</li>
+                <li><span>취미</span> 🏊‍♀️ 수영</li>
+            </ul>
+        </article>
+        <img src="profile_image.jpg" alt="프로필 사진" class="profile-img">
+    </section>
+
+    <section>
+        <h2>Interests</h2>
+        <ul class="interests-list">
+            <li>🧩 스도쿠</li>
+            <li>🎲 루미큐브</li>
+            <li>🎮 닌텐도 스위치 게임</li>
+            <li>✈️ 여행</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Stack</h2>
+        <table>
+            <tr>
+                <th>카테고리</th>
+                <th>내용</th>
+            </tr>
+            <tr>
+                <td>Language</td>
+                <td>Java, PHP</td>
+            </tr>
+            <tr>
+                <td>Server/Framework</td>
+                <td>Spring Boot, Apache</td>
+            </tr>
+            <tr>
+                <td>DB</td>
+                <td>MySQL, MariaDB</td>
+            </tr>
+            <tr>
+                <td>Infra & Tool</td>
+                <td>Docker, AWS, Git</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="edu-item">
+            <p>🎓 컴퓨터공학 학사 - 이화여자대학교 (2021.03 - 2026.02)</p>
+        </div>
+        <div class="edu-item">
+            <p>🇩🇪 교환학생 - 독일 마인츠대학교 (Johannes Gutenberg University Mainz) (2024.03 - 2024.08)</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Contact</h2>
+        <p>📧 이메일: <a href="mailto:sooooscode@gmail.com">sooooscode@gmail.com</a></p>
+        <p>🔗 GitHub: <a href="https://github.com/sooooscode" target="_blank">github.com/sooooscode</a></p>
+        <p>💼 LinkedIn: <a href="http://www.linkedin.com/in/sooooscode" target="_blank">linkedin.com/in/sooooscode</a></p>
+    </footer>
+</main>
+
+</body>
+</html>
