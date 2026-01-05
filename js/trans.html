@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍길동 변신</title>
+</head>
+<body>
+    <script>
+        // prompt를 통해 입력을 받음
+        const transformation = prompt("무엇으로 변신하시겠습니까?");
+
+        // 입력받은 값이 있는지 확인 (null이 아니고 공백이 아닌 경우)
+        if (transformation && transformation.trim() !== "") {
+            document.write(`<h1>홍길동 변신–${transformation}!</h1>`);
+        } else {
+            // 값이 없거나 취소한 경우
+            document.write("<h1>연기처럼 사라졌습니다.</h1>");
+        }
+    </script>
+</body>
+</html>
