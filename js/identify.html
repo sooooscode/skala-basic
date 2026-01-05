@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주민등록번호 검증</title>
+</head>
+<body>
+    <h1>주민등록번호 검증</h1>
+    <input type="text" id="rrnFront" placeholder="000000" maxlength="6" style="width: 60px;"> -
+    <input type="password" id="rrnBack" placeholder="0000000" maxlength="7" style="width: 70px;">
+    <button onclick="checkRRN()">검증하기</button>
+    <p id="result"></p>
+    <p id="maskedRRN"></p>
+
+    <script>
+        /**
+         * 주민등록번호 마스킹 함수
+         * 앞 6자리와 뒷자리 첫 번째(성별)만 보여주고 나머지는 * 처리
+         * @param {string} rrn 
+         * @returns {string}
+         */
+        function maskRRN(rrn) {
+            const cleanRRN = rrn.replace(/-/g, '');
+            if (cleanRRN.length < 7) return rrn;
+            
+            const front = cleanRRN.substring(0, 6);
+            const gender = cleanRRN.charAt(6);
+            return `${front}-${gender}******`;
+        }
+
+        /**
+         * 대한민국 주민등록번호 검증 함수
+         * @param {string} rrn - 주민등록번호 (하이픈 유무 상관없음)
+         * @returns {boolean} - 유효성 여부
+         */
+        function validateRRN(rrn) {
+            // 하이픈 제거
+            const cleanRRN = rrn.replace(/-/g, '');
+            
+            // 13자리 숫자 여부 확인
+            if (!/^\d{13}$/.test(cleanRRN)) {
+                return false;
+            }
+
+            const yy = parseInt(cleanRRN.substring(0, 2));
+            const mm = parseInt(cleanRRN.substring(2, 4));
+            const dd = parseInt(cleanRRN.substring(4, 6));
+            const genderDigit = parseInt(cleanRRN.charAt(6));
+
+            // 성별 코드를 통한 세기 확인
+            // 1, 2: 1900년대생 (내국인)
+            // 3, 4: 2000년대생 (내국인)
+            // 5, 6: 1900년대생 (외국인)
+            // 7, 8: 2000년대생 (외국인)
+            // 9, 0: 1800년대생 (내국인)
+            let century = 0;
+            if ([1, 2, 5, 6].includes(genderDigit)) century = 1900;
+            else if ([3, 4, 7, 8].includes(genderDigit)) century = 2000;
+            else if ([9, 0].includes(genderDigit)) century = 1800;
+            else return false;
+
+            const birthYear = century + yy;
+            
+            // 날짜 유효성 검사
+            const birthDate = new Date(birthYear, mm - 1, dd);
+            if (birthDate.getFullYear() !== birthYear || 
+                birthDate.getMonth() !== mm - 1 || 
+                birthDate.getDate() !== dd) {
+                return false;
+            }
+
+            // 가중치 배열 (2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5)
+            const weights = [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5];
+            let sum = 0;
+            
+            for (let i = 0; i < 12; i++) {
+                sum += parseInt(cleanRRN.charAt(i)) * weights[i];
+            }
+
+            // 검증식: (11 - (합계 % 11)) % 10
+            const checkDigit = (11 - (sum % 11)) % 10;
+
+            return checkDigit === parseInt(cleanRRN.charAt(12));
+        }
+
+        function checkRRN() {
+            const front = document.getElementById('rrnFront').value;
+            const back = document.getElementById('rrnBack').value;
+            const fullRRN = front + back;
+            
+            const resultElement = document.getElementById('result');
+            const maskedElement = document.getElementById('maskedRRN');
+            
+            if (validateRRN(fullRRN)) {
+                resultElement.innerText = "유효한 주민등록번호입니다.";
+                resultElement.style.color = "green";
+                maskedElement.innerText = "마스킹 결과: " + maskRRN(fullRRN);
+            } else {
+                resultElement.innerText = "유효하지 않은 주민등록번호입니다.";
+                resultElement.style.color = "red";
+                maskedElement.innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
