@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 핸들러 실습</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+        }
+
+        #output {
+            margin-top: 20px;
+            width: 400px;
+            height: 100px;
+            color: yellow;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- 클릭 시 함수를 호출하도록 ()를 추가하고, event 객체를 전달합니다 -->
+    <div id="input">
+        여기를 클릭하거나 더블 클릭하세요.>
+    </div>
+    
+    <div id="output">이곳에 결과가 표시됩니다.</div>
+
+    <script>
+        
+        const inputDiv = document.querySelector('div');
+        inputDiv.addEventListener("click", handleClick);
+        inputDiv.addEventListener("dblclick", handleDblClick);
+
+        // inputDiv.onclick = handleClick;
+        // inputDiv.ondblclick = handleDblClick;
+
+        const outputDiv = document.getElementById('output');
+
+        function handleClick(e) 
+        {
+            outputDiv.textContent = `클릭 이벤트가 발생했습니다!`;
+            console.log('Div 클릭!', e);
+            
+            // 화면에 클릭 정보 출력
+            outputDiv.style.backgroundColor = 'black'; // 배경색을 변경하여 변화 확인
+        }
+
+        function handleDblClick(e) {
+            console.log('Div 더블클릭!', e);
+            outputDiv.textContent = '더블클릭 되었습니다!';
+            outputDiv.style.backgroundColor = 'red';
+        }
+
+        function handleMouseOver(e) {
+            console.log('Mouse Over!', e);
+            outputDiv.textContent = '마우스가 들어왔습니다!';
+            outputDiv.style.backgroundColor = 'green';
+        }
+
+        function handleMouseOut(e) {
+            console.log('Mouse Out!', e);
+            outputDiv.textContent = '마우스가 나갔습니다!';
+            outputDiv.style.backgroundColor = 'gray';
+        }
+
+    </script>
+</body>
+</html>
+
