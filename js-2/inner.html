@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inner HTML 예제</title>
+</head>
+<body>
+
+    <h1>innerHTML 예제</h1>
+    <div id="html-div">
+    </div>
+    
+    <hr>
+
+    <h1>textContent 예제</h1>
+    <div id="text-div">
+    </div>
+    
+
+    <script>
+
+        const message = "<strong>안녕하세요</strong>, <em>홍길동</em>입니다.";
+    
+        const htmlDiv = document.getElementById('html-div');
+        htmlDiv.innerHTML = message;
+        const textDiv = document.getElementById('text-div');
+        textDiv.textContent = message;
+
+    </script>
+    
+</body>
+</html>
