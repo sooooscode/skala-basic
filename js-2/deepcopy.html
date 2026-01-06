@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Copy 구현</title>
+</head>
+<body>
+    <h1>Deep Copy 결과 확인 (Console 참조)</h1>
+
+    <script>
+        /**
+         * 객체의 깊은 복사를 수행하는 함수
+         * @param {any} obj - 복사할 대상
+         * @returns {any} - 복사된 결과
+         */
+        function deepCopy(obj) {
+            // 원시 타입이거나 null인 경우 그대로 반환
+            if (obj === null || typeof obj !== 'object') {
+                return obj;
+            }
+
+            // Date 객체 처리
+            if (obj instanceof Date) {
+                return new Date(obj.getTime());
+            }
+
+            // RegExp 객체 처리
+            if (obj instanceof RegExp) {
+                return new RegExp(obj);
+            }
+
+            // 배열 또는 객체에 따라 초기화
+            const copy = Array.isArray(obj) ? [] : {};
+
+            // 재귀적으로 속성 복사
+            for (const key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    copy[key] = deepCopy(obj[key]);
+                }
+            }
+
+            return copy;
+        }
+
+        // 테스트 코드
+        const original = {
+            name: "홍길동",
+            age: 25,
+            details: {
+                hobbies: ["축구", "게임"],
+                address: "서울"
+            },
+            createdAt: new Date()
+        };
+
+        const cloned = deepCopy(original);
+
+        // 복사본 수정
+        cloned.details.address = "부산";
+        cloned.details.hobbies.push("독서");
+
+        console.log("Original Object:", original);
+        console.log("Cloned Object:", cloned);
+        
+        console.log("주소 비교 (false여야 함):", original.details.address === cloned.details.address);
+        console.log("취미 배열 비교 (false여야 함):", original.details.hobbies === cloned.details.hobbies);
+    </script>
+</body>
+</html>
