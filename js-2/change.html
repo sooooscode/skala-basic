@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍길동 변신(라디오 버튼)</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; padding: 20px; line-height: 1.6; }
+        .container { border: 1px solid #ddd; padding: 20px; border-radius: 8px; max-width: 400px; }
+        .radio-group { margin: 15px 0; }
+        label { margin-right: 15px; cursor: pointer; }
+        button { padding: 8px 16px; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 4px; }
+        button:hover { background-color: #45a049; }
+        #result { margin-top: 20px; font-weight: bold; color: #2c3e50; min-height: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>홍길동 변신술</h1>
+        <p>변신할 대상을 선택하세요:</p>
+        
+        <div class="radio-group">
+            <label><input type="radio" name="target" value="스님"> 스님</label>
+            <label><input type="radio" name="target" value="곰"> 곰</label>
+            <label><input type="radio" name="target" value="호랑이"> 호랑이</label>
+        </div>
+
+        <button onclick="doTransform()">변신!</button>
+
+        <div id="result">선택 대기 중...</div>
+    </div>
+
+    <script>
+        function doTransform() {
+            // 선택된 라디오 버튼을 찾습니다.
+            const selected = document.querySelector('input[name="target"]:checked');
+            const resultDiv = document.getElementById('result');
+
+            if (selected) {
+                const targetValue = selected.value;
+                resultDiv.textContent = `✨ 펑! 홍길동이 ${targetValue}(으)로 변신했습니다!`;
+                resultDiv.style.color = "#e67e22";
+            } else {
+                resultDiv.textContent = "❌ 변신할 대상을 먼저 선택해주세요.";
+                resultDiv.style.color = "#e74c3c";
+            }
+        }
+    </script>
+</body>
+</html>
