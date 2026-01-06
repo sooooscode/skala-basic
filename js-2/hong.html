@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분신 홍길동 - 그림자와 분신 없애기</title>
+</head>
+<body>
+    <script>
+        
+        const realHong = {
+            name: "홍길동",
+            age: 25,
+            job: "의적",
+            skills: ["검술", "전략", "분신"],
+            shadow: { 
+                color: "검은색"
+            }
+        };
+
+        // 진짜홍길동을 기반으로 가짜홍길동 생성
+        // shadow 속성을 제외하고(destructuring), skills에서 "분신"을 제거함
+        const { shadow, ...rest } = realHong;
+        const fakeHong = {
+            ...rest,
+            skills: realHong.skills.filter(skill => skill !== "분신")
+        };
+
+        console.log('realHong:', realHong);
+        console.log('fakeHong:', fakeHong);
+
+
+    </script>
+    
+</body>
+</html>
