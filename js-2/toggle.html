@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토글</title>
+
+    <style>
+        .highlight {
+            background-color: yellow;
+            color: red;
+            font-weight: bold;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <p id="highlight">이 문장을 강조해보세요!</p>
+    <button onclick="toggleHighlight()">강조 토글</button>
+
+    <script>
+        function toggleHighlight() {
+            const p = document.getElementById('highlight');
+            p.classList.toggle('highlight');
+        }
+    </script>
+</body>
+</html>
